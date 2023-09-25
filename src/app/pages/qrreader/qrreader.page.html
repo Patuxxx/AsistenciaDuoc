@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="title-center">
+      <img src="assets/img/duoc.png" alt="Ico" class="centered-icon"></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-header>
+  <ion-title class="ion-padding-top ion-text">
+    <ion-card  >
+      <h1 #titulo style="color: black;">Sistema de Asistencia </h1>  
+    </ion-card>
+</ion-title>
+  
+  <ion-toolbar color="--ion-color-amarillo">
+    <ion-title class="ion-text-center">¡Binvenido!</ion-title>
+    <p class="ion-text-center" *ngIf="usuario"> {{ usuario.nombre }}</p>
+  </ion-toolbar>
+</ion-header>
+  <br>
+  <img src="../assets/img/01.avif" alt="Imagen de fondo" class="background-image">
+  <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" expand="full" shape="round" class="boton-amarillo">
+    <ion-icon slot="start" name="videocam-outline"></ion-icon>
+    Escanea tu QR
+  </ion-button>
+
+  <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" expand="full" shape="round" class="boton-amarillo">
+    <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
+    Detener Registro
+  </ion-button>
+  
+  <video #video [hidden]="!escaneando" width="100%" ></video>
+  <canvas #canvas hidden></canvas>
+
+  <ion-card class="f">
+  
+    <ion-card-content class="borde">
+      <table>
+        <tr>
+          <td>Sede :</td>
+          <td>{{sede}}</td>
+        </tr>
+        <tr>
+          <td>Sigla :</td>
+          <td>{{idAsignatura}}</td>
+        </tr>
+        <tr>
+          <td>Sección :</td>
+          <td>{{seccion}}</td>
+        </tr>
+        <tr>
+          <td>Asignatura :</td>
+          <td>{{nombreAsignatura}}</td>
+        </tr>
+        <tr>
+          <td>Profesor :</td>
+          <td>{{nombreProfesor}}</td>
+        </tr>
+        <tr>
+          <td>Día :</td>
+          <td>{{dia}}</td>
+        </tr>
+        <tr>
+          <td>Inicio :</td>
+          <td>{{bloqueInicio}}</td>
+        </tr>
+        <tr>
+          <td>Término :</td>
+          <td>{{bloqueTermino}}</td>
+        </tr>
+        <tr>
+          <td>Hora de inicio :</td>
+          <td>{{horaInicio}}</td>
+        </tr>
+        <tr>
+          <td>Hora de término :</td>
+          <td>{{horaFin}}</td>
+        </tr>
+      </table>
+        
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-button (click)="limpiarDatos()" expand="full" shape="round" class="boton-amarillo">
+    <ion-icon slot="start" name="trash-outline"></ion-icon>
+    Limpiar datos
+  </ion-button>  
+
+  
+</ion-content>
+
+
